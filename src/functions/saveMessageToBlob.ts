@@ -28,6 +28,6 @@ export async function saveMessageToBlob(
 
 app.storageQueue("saveMessageToBlob", {
   queueName: "js-queue-items",
-  connection: "labahomework5storage_STORAGE",
+  connection: "AzureWebJobsStorage",
   handler: saveMessageToBlob,
 });
