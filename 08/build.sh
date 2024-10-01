@@ -1,2 +1,2 @@
 cd MyGallery
-docker build -t labahomework/mygallery .
+docker build -t labahomework/mygallery:latest .
