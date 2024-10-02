@@ -1,2 +1,2 @@
-cd MyGallery
-docker build -t labahomework/mygallery:latest .
+cd nginx
+docker build -t labahomeworknginx .
