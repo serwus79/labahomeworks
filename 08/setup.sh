@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Setup file for laba homework 8
+# more info: https://github.com/serwus79/labahomeworks/tree/main/08
+# build docker image, publish to container instance
+
 # Colors
 YELLOW='\033[1;33m'
 RED='\033[0;31m'
