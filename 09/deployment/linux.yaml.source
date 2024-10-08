@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: labahomeworknhello-deployment
+  labels:
+    environment: dev
+    app: hellofromnode
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: hellofromnode
+      labels:
+        app: hellofromnode
+    spec:
+      nodeSelector:
+        "kubernetes.io/os": linux
+      containers:
+      - name: hellofromnode
+        image: ACR_NAME.azurecr.io/IMG_NAME:latest
+        resources:
+          limits:
+            cpu: 1
+            memory: 800M
+        ports:
+          - containerPort: 80
+  selector:
+    matchLabels:
+      app: hellofromnode
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: labahomeworknhello-service
+spec:
+  type: LoadBalancer
+  ports:
+  - protocol: TCP
+    port: 80
+  selector:
+    app: hellofromnode
