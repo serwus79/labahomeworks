@@ -4,7 +4,7 @@
 # az login
 
 # Set variables for the Resource Group
-resourceGroupName="labahw09"
+resourceGroupName="labahw09lin"
 
 # Check if the Resource Group exists
 groupExists=$(az group exists --name $resourceGroupName)

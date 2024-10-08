@@ -1,2 +1,4 @@
 **/_report/*
 .DS_Store
+**/bin
+**/obj

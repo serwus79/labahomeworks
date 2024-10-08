@@ -4,29 +4,29 @@ metadata:
   name: IMG_NAME-deployment
   labels:
     environment: dev
-    app: hellofromnode
+    app: hellofromcore
 spec:
   replicas: 1
   template:
     metadata:
-      name: hellofromnode
+      name: hellofromcore
       labels:
-        app: hellofromnode
+        app: hellofromcore
     spec:
       nodeSelector:
-        "kubernetes.io/os": linux
+        "kubernetes.io/os": windows
       containers:
-      - name: hellofromnode
+      - name: hellofromcore
         image: ACR_NAME.azurecr.io/IMG_NAME:latest
         resources:
           limits:
             cpu: 1
             memory: 800M
         ports:
-          - containerPort: 80
+          - containerPort: 8080
   selector:
     matchLabels:
-      app: hellofromnode
+      app: hellofromcore
 ---
 apiVersion: v1
 kind: Service
@@ -38,4 +38,4 @@ spec:
   - protocol: TCP
     port: 80
   selector:
-    app: hellofromnode
+    app: hellofromcore

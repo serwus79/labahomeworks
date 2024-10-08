@@ -8,13 +8,12 @@ RED='\033[0;31m'
 NC='\033[0m' # No Color
 
 # Set variables for the Resource Group and other resources
-resourceGroupName="labahw09lin"
+resourceGroupName="labahw09wind"
 location="PolandCentral"
 registryName="${resourceGroupName}registry"
 aciName="${resourceGroupName}containerinstance"
 aksClusterName="${resourceGroupName}kscluster"
-imageName="labahomeworknhello"
-
+imageName="labahomeworkwinhello"
 # Array of required providers
 requiredProviders=("Microsoft.ContainerService")
 
@@ -35,12 +34,12 @@ echo -e "${YELLOW}Logging in to Azure Container Registry...${NC}"
 az acr login --name $registryName
 
 echo -e "${YELLOW}Building image in ACR...${NC}"
-az acr build --registry $registryName --image $imageName:latest ./app_linux
+az acr build --registry $registryName --image $imageName:latest --platform windows ./HelloWorld
 
 # Replace registry name and image name in aks deployment file
 echo -e "${YELLOW}Replace registry name and image name in aks deployment file...${NC}"
-sed "s/ACR_NAME/$registryName/" ./deployment/linux.yaml.source > ./deployment/linux.yaml
-sed -i "" "s/IMG_NAME/$imageName/" ./deployment/linux.yaml
+sed "s/ACR_NAME/$registryName/" ./deployment/windows.yaml.source > ./deployment/windows.yaml
+sed -i "" "s/IMG_NAME/$imageName/" ./deployment/windows.yaml
 
 # Creating AKS cluster and attach ACR
 echo -e "${YELLOW}Creating AKS: $aksClusterName and attaching ACR...${NC}"
@@ -54,8 +53,8 @@ az aks create \
 echo -e "${YELLOW}Retrieving the AKS credentials...${NC}"
 az aks get-credentials --resource-group $resourceGroupName --name $aksClusterName
 
-echo -e "${YELLOW}Applying linux deployment...${NC}"
-kubectl apply -f ./deployment/linux.yaml
+echo -e "${YELLOW}Applying windows deployment...${NC}"
+kubectl apply -f ./deployment/windows.yaml
 
 echo -e "${YELLOW}Setting up HPA autoscaling for the application...${NC}"
 kubectl autoscale deployment "${imageName}-deployment" --cpu-percent=50 --min=1 --max=10
