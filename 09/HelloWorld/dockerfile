@@ -15,4 +15,4 @@ EXPOSE 8080
 WORKDIR /app
 COPY --from=build /app .
 USER ContainerUser
-ENTRYPOINT ["aspnetapp"]
+ENTRYPOINT ["HelloWorld"]

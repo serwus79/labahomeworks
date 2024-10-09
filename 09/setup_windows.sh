@@ -14,6 +14,8 @@ registryName="${resourceGroupName}registry"
 aciName="${resourceGroupName}containerinstance"
 aksClusterName="${resourceGroupName}kscluster"
 imageName="labahomeworkwinhello"
+windowsAdminUsername="localadmin"
+windowsAdminPassword="..."
 # Array of required providers
 requiredProviders=("Microsoft.ContainerService")
 
@@ -43,12 +45,26 @@ sed -i "" "s/IMG_NAME/$imageName/" ./deployment/windows.yaml
 
 # Creating AKS cluster and attach ACR
 echo -e "${YELLOW}Creating AKS: $aksClusterName and attaching ACR...${NC}"
+
 az aks create \
   --resource-group $resourceGroupName \
   --name $aksClusterName \
-  --node-count 4 \
+  --network-plugin azure \
+  --windows-admin-username $windowsAdminUsername \
+  --windows-admin-password $windowsAdminPassword \
+  --node-count 2 \
+  --vm-set-type VirtualMachineScaleSets \
   --generate-ssh-keys \
   --attach-acr $registryName
+
+echo -e "${YELLOW}Creating windows nodepool...${NC}"
+az aks nodepool add \
+    --resource-group $resourceGroupName \
+    --cluster-name $aksClusterName \
+    --os-type Windows \
+    --name npwin \
+    --node-count 1
+
 
 echo -e "${YELLOW}Retrieving the AKS credentials...${NC}"
 az aks get-credentials --resource-group $resourceGroupName --name $aksClusterName
