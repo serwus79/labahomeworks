@@ -1,0 +1,45 @@
+{
+    "id": "/providers/Microsoft.Authorization/roleDefinitions/4633458b-17de-408a-b874-0445c86b69e6",
+    "properties": {
+        "roleName": "Key Vault Secrets User",
+        "description": "Read secret contents. Only works for key vaults that use the 'Azure role-based access control' permission model.",
+        "assignableScopes": [
+            "/"
+        ],
+        "permissions": [
+            {
+                "actions": [],
+                "notActions": [],
+                "dataActions": [
+                    "Microsoft.KeyVault/vaults/secrets/getSecret/action",
+                    "Microsoft.KeyVault/vaults/secrets/readMetadata/action"
+                ],
+                "notDataActions": []
+            }
+        ]
+    }
+}
+
+{
+    "id": "/providers/Microsoft.Authorization/roleDefinitions/db79e9a7-68ee-4b58-9aeb-b90e7c24fcba",
+    "properties": {
+        "roleName": "Key Vault Certificate User",
+        "description": "Read certificate contents. Only works for key vaults that use the 'Azure role-based access control' permission model.",
+        "assignableScopes": [
+            "/"
+        ],
+        "permissions": [
+            {
+                "actions": [],
+                "notActions": [],
+                "dataActions": [
+                    "Microsoft.KeyVault/vaults/certificates/read",
+                    "Microsoft.KeyVault/vaults/secrets/getSecret/action",
+                    "Microsoft.KeyVault/vaults/secrets/readMetadata/action",
+                    "Microsoft.KeyVault/vaults/keys/read"
+                ],
+                "notDataActions": []
+            }
+        ]
+    }
+}

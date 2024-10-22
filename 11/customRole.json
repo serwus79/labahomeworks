@@ -1,0 +1,22 @@
+{
+  "properties": {
+    "roleName": "Key Vault Secrets and Certificates User",
+    "description": "Read secret and certificates contents.",
+    "assignableScopes": ["/subscriptions/cb817725-db40-42f3-9d78-928f943bc34e"],
+    "permissions": [
+      {
+        "actions": [],
+        "notActions": [],
+        "dataActions": [
+          "Microsoft.KeyVault/vaults/secrets/getSecret/action",
+          "Microsoft.KeyVault/vaults/secrets/readMetadata/action",
+          "Microsoft.KeyVault/vaults/certificates/read",
+          "Microsoft.KeyVault/vaults/secrets/getSecret/action",
+          "Microsoft.KeyVault/vaults/secrets/readMetadata/action",
+          "Microsoft.KeyVault/vaults/keys/read"
+        ],
+        "notDataActions": []
+      }
+    ]
+  }
+}
