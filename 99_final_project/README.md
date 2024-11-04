@@ -37,6 +37,7 @@ Celem projektu jest stworzenie i wdrożenie aplikacji webowej na platformie Azur
 
 ## Zasoby
 
+- https://github.com/Azure-Samples/todo-csharp-cosmos-sql (hłehłe)
 - https://learn.microsoft.com/en-us/dotnet/aspire/
 - https://github.com/dotnet/aspire-samples/tree/main
 - https://learn.microsoft.com/en-us/azure/developer/azure-developer-cli/
