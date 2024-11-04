@@ -34,3 +34,8 @@ Celem projektu jest stworzenie i wdrożenie aplikacji webowej na platformie Azur
    Skonfigurowanie procesu Continuous Integration/Continuous Deployment z wykorzystaniem Azure DevOps lub GitHub Actions.
 9. Automatyzacja:
    Użycie ARM Templates, Bicep lub Terraform do automatycznego wdrażania infrastruktury.
+
+
+## Zasoby
+- https://learn.microsoft.com/en-us/dotnet/aspire/
+- https://github.com/dotnet/aspire-samples/tree/main
